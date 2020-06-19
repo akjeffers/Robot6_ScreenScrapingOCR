@@ -3,11 +3,11 @@
   "description": "Scrape data from scanned PDF documents using optical character recognition",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.8.2-preview]",
-    "UiPath.Mail.Activities": "[1.8.2-preview]",
-    "UiPath.PDF.Activities": "[3.2.2-preview]",
-    "UiPath.System.Activities": "[20.3.0-preview]",
-    "UiPath.UIAutomation.Activities": "[20.3.0-alpha]"
+    "UiPath.Excel.Activities": "[2.8.5]",
+    "UiPath.Mail.Activities": "[1.8.5]",
+    "UiPath.PDF.Activities": "[3.2.2]",
+    "UiPath.System.Activities": "[20.4.0]",
+    "UiPath.UIAutomation.Activities": "[20.4.1]"
   },
   "webServices": [],
   "schemaVersion": "4.0",

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1318,1545" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="652,1625" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
@@ -27,7 +27,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -45,18 +45,20 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="554,1380" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="496,1420" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="fileList" />
+      <Variable x:TypeArguments="x:String" Name="OCROutput" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="454,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[fileList]</OutArgument>
       </Assign.To>
@@ -64,22 +66,68 @@
         <InArgument x:TypeArguments="s:String[]">[directory.GetFiles("ScannedDocuments", "*.pdf")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="512,1188" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[fileList]">
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="454,1228" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[fileList]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="pdf" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1053" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,1093" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[pdf.ToString]" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Open Zoom Window" sap:VirtualizedContainerService.HintSize="434,155" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="y" KeyModifiers="Ctrl">
+            <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[pdf.ToString]" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+            <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 1 second" Duration="00:00:01" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+              <TextExpression.Namespaces>
+                <sco:Collection x:TypeArguments="x:String">
+                  <x:String>System.Activities</x:String>
+                  <x:String>System.Activities.Statements</x:String>
+                  <x:String>System.Activities.Expressions</x:String>
+                  <x:String>System.Activities.Validation</x:String>
+                  <x:String>System.Activities.XamlIntegration</x:String>
+                  <x:String>Microsoft.VisualBasic.Activities</x:String>
+                  <x:String>System</x:String>
+                  <x:String>System.Collections.Generic</x:String>
+                  <x:String>System.Data</x:String>
+                  <x:String>System.Diagnostics</x:String>
+                  <x:String>System.IO</x:String>
+                  <x:String>System.Linq</x:String>
+                  <x:String>System.Management.Automation</x:String>
+                  <x:String>System.Net.Mail</x:String>
+                  <x:String>System.Xml</x:String>
+                  <x:String>System.Xml.Linq</x:String>
+                  <x:String>UiPath.Library</x:String>
+                  <x:String>System.Windows.Markup</x:String>
+                </sco:Collection>
+              </TextExpression.Namespaces>
+              <TextExpression.References>
+                <sco:Collection x:TypeArguments="AssemblyReference">
+                  <AssemblyReference>System.Activities</AssemblyReference>
+                  <AssemblyReference>mscorlib</AssemblyReference>
+                  <AssemblyReference>System.Data</AssemblyReference>
+                  <AssemblyReference>System</AssemblyReference>
+                  <AssemblyReference>System.Core</AssemblyReference>
+                  <AssemblyReference>System.Management.Automation</AssemblyReference>
+                  <AssemblyReference>System.Xml</AssemblyReference>
+                  <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                  <AssemblyReference>UiPath.Library</AssemblyReference>
+                  <AssemblyReference>PresentationFramework</AssemblyReference>
+                  <AssemblyReference>WindowsBase</AssemblyReference>
+                  <AssemblyReference>PresentationCore</AssemblyReference>
+                  <AssemblyReference>System.Xaml</AssemblyReference>
+                </sco:Collection>
+              </TextExpression.References>
+              <sap2010:WorkflowViewState.ViewStateManager>
+                <sap2010:ViewStateManager>
+                  <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                </sap2010:ViewStateManager>
+              </sap2010:WorkflowViewState.ViewStateManager>
+            </Delay>
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Open Zoom Window" sap:VirtualizedContainerService.HintSize="376,155" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="y" KeyModifiers="Ctrl">
               <ui:SendHotkey.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="dfcf9a823a5a4ee3c7b833e65f0f6098" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0e6483b3-9551-4159-b1e9-38a5a9b36e13" InformativeScreenshot="dfcf9a823a5a4ee3c7b833e65f0f6098" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -89,26 +137,29 @@
                 </ui:Target>
               </ui:SendHotkey.Target>
             </ui:SendHotkey>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Zoom Window" sap:VirtualizedContainerService.HintSize="434,230" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="4cc40393059030019c98bef674c91e7a" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
-              <ui:WindowScope.Body>
-                <ActivityAction x:TypeArguments="x:Object">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </Sequence>
-                </ActivityAction>
-              </ui:WindowScope.Body>
-            </ui:WindowScope>
-            <Sequence DisplayName="PDF Screen Scraping " sap:VirtualizedContainerService.HintSize="434,223" sap2010:WorkflowViewState.IdRef="Sequence_3">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:String" Name="OCRoutput" />
-              </Sequence.Variables>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="376,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8067f810-2b70-427a-8f55-6b198b300335" InformativeScreenshot="83de0e2d5a693e99977bc0494f21641c" Selector="&lt;wnd app='acrord32.exe' omit:cls='#32770' title='Zoom To' /&gt;&lt;wnd cls='Button' title='OK' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <Sequence DisplayName="PDF Screen Scraping " sap:VirtualizedContainerService.HintSize="376,223" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -120,14 +171,15 @@
                     <ActivityFunc.Argument>
                       <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
                     </ActivityFunc.Argument>
-                    <ui:MicrosoftOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Microsoft OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_1" Image="[Image]" />
+                    <ui:MicrosoftOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" ComputeSkewAngle="False" DisplayName="Microsoft OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_1" Image="[Image]" Text="[OCROutput]" />
                   </ActivityFunc>
                 </ui:ReadPDFWithOCR.OCREngine>
               </ui:ReadPDFWithOCR>
             </Sequence>
-            <ui:CloseApplication DisplayName="Close Application 'AcroRd32.exe BCTC-62598...'" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="376,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[OCROutput]" />
+            <ui:CloseApplication DisplayName="Close Application 'AcroRd32.exe BCTC-62598...'" sap:VirtualizedContainerService.HintSize="376,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
               <ui:CloseApplication.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9e4d04a349df16786947e8a0b651b49c" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="10fa77d4-7236-4c67-a635-9c13e9661fe8" InformativeScreenshot="9e4d04a349df16786947e8a0b651b49c" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
