@@ -58,6 +58,11 @@
       <Variable x:TypeArguments="x:String" Name="OCROutput" />
       <Variable x:TypeArguments="x:String" Name="varProductName" />
       <Variable x:TypeArguments="x:String" Name="varCompanyName" />
+      <Variable x:TypeArguments="x:String" Name="varReportNo" />
+      <Variable x:TypeArguments="x:String" Name="varDateReport" />
+      <Variable x:TypeArguments="x:String" Name="varTestDate" />
+      <Variable x:TypeArguments="x:String" Name="varAddress" />
+      <Variable x:TypeArguments="x:String" Name="varModelName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -188,7 +193,7 @@
                           </ui:Target>
                         </ui:GetOCRText.Target>
                         <ui:GetOCRText.Text>
-                          <OutArgument x:TypeArguments="x:String">[varCompanyName]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[varModelName]</OutArgument>
                         </ui:GetOCRText.Text>
                       </ui:GetOCRText>
                       <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get Address" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_4">
@@ -214,7 +219,7 @@
                           </ui:Target>
                         </ui:GetOCRText.Target>
                         <ui:GetOCRText.Text>
-                          <OutArgument x:TypeArguments="x:String">[varCompanyName]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[varAddress]</OutArgument>
                         </ui:GetOCRText.Text>
                       </ui:GetOCRText>
                       <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get Test Date" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_5">
@@ -240,7 +245,7 @@
                           </ui:Target>
                         </ui:GetOCRText.Target>
                         <ui:GetOCRText.Text>
-                          <OutArgument x:TypeArguments="x:String">[varCompanyName]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[varTestDate]</OutArgument>
                         </ui:GetOCRText.Text>
                       </ui:GetOCRText>
                       <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get Date of Report " sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_6">
@@ -266,7 +271,7 @@
                           </ui:Target>
                         </ui:GetOCRText.Target>
                         <ui:GetOCRText.Text>
-                          <OutArgument x:TypeArguments="x:String">[varCompanyName]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[varDateReport]</OutArgument>
                         </ui:GetOCRText.Text>
                       </ui:GetOCRText>
                       <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get Report No." sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetOCRText_7">
@@ -292,7 +297,7 @@
                           </ui:Target>
                         </ui:GetOCRText.Target>
                         <ui:GetOCRText.Text>
-                          <OutArgument x:TypeArguments="x:String">[varCompanyName]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[varReportNo]</OutArgument>
                         </ui:GetOCRText.Text>
                       </ui:GetOCRText>
                     </Sequence>
